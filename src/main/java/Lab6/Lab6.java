@@ -14,33 +14,55 @@ public class Lab6 {
     //Instantiates a hasmap that maps integers to integers.
     //See Lab6Test.java for expected key => value pairs.
     public HashMap<Integer, Integer> integerToInteger(){
-        return null;
+        HashMap<Integer, Integer> h = new HashMap<>();
+        h.put(0, 5);
+        return h;
     }
     //Instantiates a hashmap that maps doubles to double.
     //See Lab6Test.java for expected key => value pairs.
     public HashMap<Double, Double> doubleToDouble(){
-        return null;
+        HashMap<Double, Double> h = new HashMap<>();
+        h.put(-1.5, 5.5);
+        return h;
     }
     //Instantiates a hashmap that maps lower case characters to their upper case string.
     //See Lab6Test.java for expected key => value pairs.
     public HashMap<Character, String> characterToString(){
-        return null;
+        HashMap<Character, String> h = new HashMap<>();
+        h.put('a', "A");
+        h.put('b', "B");
+        h.put('c', "C");
+        return h;
     }
     //Instantiates a hashmap that maps computer science terms to their abbreviations.
     //See Lab6Test.java for expected key => value pairs.
     public HashMap<String, String> stringToString(){
-        return null;
+        HashMap<String, String> h = new HashMap<>();
+        h.put("Central Processing Unit", "CPU");
+        h.put("Random Access Memory", "RAM");
+        return h;
     }
     //Instantiates a hashmap that maps month numbers to month names.
     //See Lab6Test.java for expected key => value pairs.
     public HashMap<Integer, String> integerToString(){
-        return null;
+        HashMap<Integer, String> h = new HashMap<>();
+        h.put(0, "January");
+        h.put(5, "May");
+        h.put(9, "September");
+        return h;
     }
     //Instantiates a hashmap that maps radix bucket names to LinkedLists containing the correct single digit entryfor that bucket.
     // Example: { bucket0 => 0, bucket1 => 1, ..., bucket9 => 0 }
     //See Lab6Test.java for expected key => value pairs.
     public HashMap<String, LinkedList<Integer>> integerToLinkedList(){
-        return null;
+        HashMap<String, LinkedList<Integer>> h = new HashMap<>();
+        LinkedList<Integer> l = new LinkedList<>();
+
+        for(int i = 0; i < 10; i++){
+            l.add(i);
+            h.put("bucket"+i, l);
+        }
+        return h;
     }
     //Instantiates a hashmap that maps hospital names to hasmaps that map the hospital's staff names to their medical group.
     //See Lab6Test.java for expected key => value pairs.
@@ -58,7 +80,16 @@ public class Lab6 {
         hospitalStaffGroup[3] = "Gastroenterology";
         hospitalStaffNames[4] = "Megan A. Britson";
         hospitalStaffGroup[4] = "Internal Medicine";
-        return null;
+
+        HashMap<String, HashMap<String, String>> h = new HashMap<>();
+        HashMap<String, String> h2 = new HashMap<>();
+
+        for (int i = 0; i < 5; i++) {
+            h2.put(hospitalStaffNames[i], hospitalStaffGroup[i]);
+        }
+
+        h.put(hospitalName, h2);
+        return h;
     }
     //Applies the paint bucket from windows paint to the pixel located at (x,y). 
     //If you are unfamiliar with the paint bucket in windows paint, it starts at a given pixel (x,y) and paints all pixels that are adjacet to and matching the color of the starting pixel.
@@ -76,7 +107,14 @@ public class Lab6 {
         if(y < 0 || y >= picture[0].length){
             return;
         }
+
+
+        paintBucket(picture, x+1, y);
+        paintBucket(picture, x-1, y);
+        paintBucket(picture, x, y+1);
+        paintBucket(picture, x, y-1);
     }
+
     public void printPicture(char[][] picture){
         int i, j;
         for(i = 0; i < picture.length; i++){
@@ -86,6 +124,7 @@ public class Lab6 {
             System.out.println(picture[i][j]);
         }
     }
+
     public static void main(String[] args) {
         Lab6 L = new Lab6();
         char[][] inputPicture1 = {
