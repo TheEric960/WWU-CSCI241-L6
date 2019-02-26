@@ -108,11 +108,23 @@ public class Lab6 {
             return;
         }
 
+        if (visited == null) {
+            visited = new HashMap<>();
+        }
 
-        paintBucket(picture, x+1, y);
-        paintBucket(picture, x-1, y);
-        paintBucket(picture, x, y+1);
-        paintBucket(picture, x, y-1);
+        String s = ("" + x) + y;
+        if (!visited.containsKey(s)) {
+            visited.put(s, (picture[x][y] == '#'));
+        }
+
+        if (!visited.get(s)) {
+            visited.put(s, true);
+            picture[x][y] = '#';
+            paintBucket(picture, x + 1, y);
+            paintBucket(picture, x - 1, y);
+            paintBucket(picture, x, y + 1);
+            paintBucket(picture, x, y - 1);
+        }
     }
 
     public void printPicture(char[][] picture){
