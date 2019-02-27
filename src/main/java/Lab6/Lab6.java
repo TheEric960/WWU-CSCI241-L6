@@ -1,7 +1,7 @@
 /*
- * Author:
- * Date:
- * Purpose:
+ * Author: Jack Wilson
+ * Date: 2/27/19
+ * Purpose: To understand HashMaps in greater depth.
  */
 package Lab6;
 
